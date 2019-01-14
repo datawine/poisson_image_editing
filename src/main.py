@@ -5,11 +5,14 @@ from poisson import *
 
 if __name__ == '__main__':
 #    offset = [-120, 0]
-    offset = [140, 150]
-    srcimg = cv2.imread("../images/test2_src.png")
-    srcmask = cv2.imread("../images/test2_mask.png")
-    dstimg = cv2.imread("../images/test2_target.png")
+#    offset = [140, 150]
+    offset = [150, 150]
+    srcimg = cv2.imread("../images/test5_src.jpg")
+    srcmask = cv2.imread("../images/test5_mask.jpg")
+#    dstimg = cv2.imread("../images/test3_target.jpg")
+    dstimg = None
     poissonOperator = Poisson(offset, srcimg, srcmask, dstimg)
-    output, naive_output = poissonOperator.process("merge1")
-    cv2.imwrite("../res/test2_result.png", output)
-    cv2.imwrite("../res/test2_naive_result.png", naive_output)
+#    output, naive_output = poissonOperator.process("merge3")
+    output = poissonOperator.single_pic_process("illu")
+    cv2.imwrite("../res/test5_illu_result.jpg", output)
+#    cv2.imwrite("../res/test3_naive_result.jpg", naive_output)
